@@ -92,7 +92,7 @@ ggplot(aes(color=as.factor(d),shape=as.factor(r1),x=variable),
   geom_jitter(aes(y=I_real/value),width = 0.2)+
   geom_hline(yintercept = 1)+
   facet_wrap(.~rho,labeller = label_both)+theme_bw()+
-  scale_y_continuous(breaks=c(0.8,1.2,1.5,2))+
+  scale_y_continuous(breaks=c(0.8,1.2,1.5,2))+coord_cartesian(ylim=c(0.7,3),name="true/estimated intersection")+
   scale_color_brewer(name="Distance",palette = "Dark2")+
   scale_shape_discrete(name=expression(r[1]))
 ggsave("newformula-error.pdf")
@@ -103,7 +103,7 @@ ggplot(aes(color=as.factor(d),shape=as.factor(r1),x=variable),
   geom_jitter(aes(y=I_real/value),width = 0.2)+
   geom_hline(yintercept = 1)+
   facet_wrap(.~rho,labeller = label_both)+theme_bw()+
-  scale_y_continuous(trans="log10")
+  scale_y_continuous(trans="log10", name="true/estimated intersection")+
   scale_color_brewer(name="Distance",palette = "Dark2")+
   scale_shape_discrete(name=expression(r[1]))
 ggsave("newformula-error-log.pdf")
