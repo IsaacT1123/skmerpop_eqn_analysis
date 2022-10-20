@@ -79,10 +79,8 @@ res=do.call("rbind",
                 function(x) do.call(sim,as.list(x))) )
 
 require(ggplot2)
-ggplot(aes(x=I_real,shape=as.factor(r1)),data=res)+
-  geom_point(aes(y=I_skmer,color="skmer"))+
-  geom_point(aes(y=I_newra,color="new formla (r*)"))+
-  geom_point(aes(y=I_newr1,color="new formla (r1)"))+
+ggplot(aes(x=I_real,shape=as.factor(r1)),data=melt(res,measure.vars = 11:14))+
+  geom_point(aes(y=value,color=variable))+
   geom_abline()+
   facet_wrap(.~rho,labeller = label_both)+theme_bw()
 ggsave("newformula.pdf")
